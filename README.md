@@ -8,6 +8,7 @@
 
 O **ImageStream** é um app desenvolvido com SwiftUI que consome imagens da API do [Pexels](https://www.pexels.com/).  
 Ele utiliza o framework `Combine` para reatividade e gerenciamento de estado com `ObservableObject`.
+Esse aplocativo foi desenvolvivido como parte do projeto Santander Bootcamp 2023 -  Mobile iOS com Swift.
 
 ---
 
