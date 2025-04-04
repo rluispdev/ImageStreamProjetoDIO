@@ -1,0 +1,15 @@
+{
+  "originHash" : "4da494510998c8cc756f7b364df4d7931b264184ebf253a18a99d92ef68a3211",
+  "pins" : [
+    {
+      "identity" : "pexels-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukepistrol/Pexels-Swift.git",
+      "state" : {
+        "revision" : "feef3637b92ea25baf9588a25578090b6a01d2af",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
