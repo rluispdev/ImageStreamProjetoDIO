@@ -10,7 +10,6 @@ import PexelsSwift
 
  
 // Modelo de foto da API Pexels
- 
 
 struct PhotoModel: Identifiable {
     var id: Int

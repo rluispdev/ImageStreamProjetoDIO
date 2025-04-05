@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
- 
 struct SizeSelectionSheet: View {
     @Binding var selectedSize: ImageQuality
     @Binding var isPresented: Bool

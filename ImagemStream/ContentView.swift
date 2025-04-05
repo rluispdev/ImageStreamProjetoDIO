@@ -4,7 +4,6 @@
 //  Created by Rafael Gonzaga on 3/24/25.
 //
 import SwiftUI
-
 struct ContentView: View {
     @StateObject private var imageService = PexelsImageService()
     @State private var selectedSize: ImageQuality = .original
@@ -13,7 +12,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.white.ignoresSafeArea() // Fundo base preto
+                Color.white.ignoresSafeArea()
 
                 if let photo = imageService.photo,
                    let urlString = photo.sources[selectedSize.rawValue],
@@ -23,15 +22,18 @@ struct ContentView: View {
                         case .success(let image):
                             image
                                 .resizable()
-                                .scaledToFit() // Respeita o "tamanho" da imagem escolhida
-                                .padding()     // Dá espaço lateral pra ver o efeito do tamanho
+                                .scaledToFit()
+                                .frame(maxHeight: selectedSize.displayHeight)
+                                .padding()
+                                .shadow(radius: 20)
+                          
                         case .failure:
                             Text("Erro ao carregar imagem")
-                                .foregroundColor(.white)
+                                .foregroundColor(.gray)
                                 .font(.headline)
                         case .empty:
                             ProgressView("Carregando imagem...")
-                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                .progressViewStyle(CircularProgressViewStyle(tint: .gray))
                         @unknown default:
                             EmptyView()
                         }
@@ -40,8 +42,6 @@ struct ContentView: View {
                 }
 
                 VStack {
-                 
-
                     Spacer()
 
                     if let photo = imageService.photo {
@@ -57,15 +57,14 @@ struct ContentView: View {
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                         }
-                     
+                        .padding(.bottom)
                     }
                 }
             }
-            .navigationTitle("ImageStream") // <- Nome do app aqui
+            .navigationTitle("ImageStream")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
-                HStack {
-                    Spacer()
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showSizeSheet = true
                     }) {
@@ -78,8 +77,6 @@ struct ContentView: View {
                             .shadow(radius: 5)
                     }
                 }
-                .padding()
-                .padding(.top, 20)
             }
             .sheet(isPresented: $showSizeSheet) {
                 SizeSelectionSheet(selectedSize: $selectedSize, isPresented: $showSizeSheet)

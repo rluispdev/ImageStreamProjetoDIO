@@ -36,4 +36,16 @@ enum ImageQuality: String, CaseIterable, Identifiable {
         case .tiny: return "200x280"
         }
     }
+
+    var displayHeight: CGFloat {
+        switch self {
+        case .original, .large2x: return 500
+        case .large: return 400
+        case .medium: return 300
+        case .small: return 200
+        case .portrait: return 350
+        case .landscape: return 250
+        case .tiny: return 150
+        }
+    }
 }
