@@ -10,18 +10,20 @@ import PexelsSwift
 
  
 // Modelo de foto da API Pexels
+ 
+
 struct PhotoModel: Identifiable {
     var id: Int
     var url: String
     var photographer: String
     var photographerURL: String
-    var imageUrl: String
+    var sources: [String: String]
 
     init(from photoData: PSPhoto) {
         self.id = photoData.id
         self.url = photoData.url
         self.photographer = photoData.photographer
         self.photographerURL = photoData.photographerURL
-        self.imageUrl = photoData.source["original"] ?? ""
+        self.sources = photoData.source
     }
 }
